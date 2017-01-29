@@ -3,7 +3,8 @@
 import rospy
 from std_msgs.msg import String
 
-def keyboardController():
+
+def keyboard_controller():
     pub = rospy.Publisher('MOTION_TOPIC', String, queue_size=2)
     rospy.init_node('KeyboardController', anonymous=True)
     while not rospy.is_shutdown():
@@ -14,6 +15,6 @@ def keyboardController():
 
 if __name__ == '__main__':
     try:
-        keyboardController()
+        keyboard_controller()
     except rospy.ROSInterruptException:
         pass
