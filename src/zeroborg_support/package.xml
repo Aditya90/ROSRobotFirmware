@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package>
-  <name>zeroborg</name>
+  <name>zeroborg_support</name>
   <version>0.0.1</version>
   <description>Package for the zeroborg motor driver</description>
 

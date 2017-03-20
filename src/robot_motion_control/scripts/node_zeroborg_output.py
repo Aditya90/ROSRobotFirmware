@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 import rospy
 from std_msgs.msg import String
-import Zeroborg
+from zeroborg_support.zeroborg import ZeroBorg
+
 
 ZB = Zeroborg.ZeroBorg()
 ZB.Init()
