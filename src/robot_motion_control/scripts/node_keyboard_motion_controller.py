@@ -13,6 +13,7 @@ def keyboard_controller():
         rospy.loginfo(motion_topic_str)
         pub.publish(motion_topic_str)
 
+
 if __name__ == '__main__':
     try:
         keyboard_controller()
