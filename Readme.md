@@ -44,6 +44,12 @@ https://cdn-learn.adafruit.com/downloads/pdf/setting-up-wifi-with-beaglebone-bla
 3. Install ROS Indigo on the BBB based on instructions from https://fleshandmachines.wordpress.com/2015/08/25/beaglebone-black-ubuntu-14-04-ros-indigo-install/.
 4. Follow the instructions on the [setup shell script](run_package.sh) on how to get the program started.
 
+## Libraries required
+1. smbus - I2C communication library
+    - The Zeroborg libraries use smbus to communicated with the i2c lines on the BBB.
+    - Installation instructions - https://pypi.python.org/pypi/smbus-cffi/0.5.1
+
+
 ## References
 
 1. Installing Ubuntu on the BBB - http://charette.no-ip.com:81/programming/2015-06-07_BeagleBoneBlack/
