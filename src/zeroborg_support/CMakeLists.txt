@@ -186,3 +186,6 @@ include_directories(
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+
+catkin_python_setup()
+#catkin_install_python(PROGRAMS scripts/zeroborg.py DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
