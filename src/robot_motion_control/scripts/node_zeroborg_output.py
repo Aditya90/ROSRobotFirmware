@@ -1,11 +1,10 @@
 #!/usr/bin/env python
 import rospy
 from std_msgs.msg import String
-import Zeroborg
+from zeroborg_support.zeroborg import ZeroBorg
 
-ZB = Zeroborg.ZeroBorg()
-ZB.Init()
 
+ZB = ZeroBorg()
 
 def motion_topic_callback(data):
     rospy.loginfo(rospy.get_caller_id() + "Moving %s", data.data)
