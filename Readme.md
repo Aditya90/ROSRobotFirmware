@@ -50,13 +50,16 @@ https://cdn-learn.adafruit.com/downloads/pdf/setting-up-wifi-with-beaglebone-bla
     - Installation instructions - https://pypi.python.org/pypi/smbus-cffi/0.5.1
 
 
-## References
 
+## References
 1. Installing Ubuntu on the BBB - http://charette.no-ip.com:81/programming/2015-06-07_BeagleBoneBlack/
 2. Installing ROS on BBB (the ubuntu img file links do not work here, but ROS installation is straightforward)
 - https://fleshandmachines.wordpress.com/2015/08/25/beaglebone-black-ubuntu-14-04-ros-indigo-install/.
 3. Zeroborg reference - https://www.piborg.org/zeroborg
-
+4. SMbus Rleated
+a. http://bradsmc.blogspot.com/2014/06/using-2-i2c-buses-on-beaglebone-black.html
+b. https://datko.net/2013/11/03/bbb_i2c/
+5.
 ## Designs
 
 ### Basic Motion Control
