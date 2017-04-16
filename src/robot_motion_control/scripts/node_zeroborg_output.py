@@ -5,6 +5,9 @@ from zeroborg_support.zeroborg import ZeroBorg
 
 
 ZB = ZeroBorg()
+ZB.i2cAddress = 0x48
+ZB.busNumber = 0x02
+ZB.Init()
 
 def motion_topic_callback(data):
     rospy.loginfo(rospy.get_caller_id() + "Moving %s", data.data)

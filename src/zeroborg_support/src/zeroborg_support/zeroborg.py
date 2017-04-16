@@ -80,7 +80,7 @@ COMMAND_ANALOG_MAX      = 0x3FF # Maximum value for analog readings
 
 IR_MAX_BYTES            = I2C_LONG_LEN - 2
 
-def ScanForZeroBorg(busNumber = 1):
+def ScanForZeroBorg(busNumber = 2):
     """
 ScanForZeroBorg([busNumber])
 
@@ -230,7 +230,7 @@ ZB.printFunction = ZB.NoPrint
 Init([tryOtherBus])
 
 Prepare the I2C driver for talking to the ZeroBorg
-If tryOtherBus is True or omitted, this function will attempt to use the other bus if the ZeroBorg devices can not be found on the current busNumber
+If tryOtherBus is True or omitted, this function will attempt to use the other bus if the ZeroBorg devices can not be found on the NumberbusNumberbusNumberurrent busNumber
         """
         self.Print('Loading ZeroBorg on bus %d, address %02X' % (self.busNumber, self.i2cAddress))
 
