@@ -22,13 +22,13 @@ def motion_topic_callback(data):
     rospy.loginfo(rospy.get_caller_id() + "Moving %s", data.data)
 
     if data.data in cmd_to_motors.keys():
-        for motorToOff in motors.keys() not in cmd_to_motors[data.data]:
+        for motorToOff in list(set(motors.keys()) - set(cmd_to_motors[data.data])):
             rospy.loginfo("Switching OFF %s", motorToOff)
-            GPIO.output(motorToOff, GPIO.LOW)
+            GPIO.output(motors[motorToOff], GPIO.LOW)
 
         for motorToOn in cmd_to_motors[data.data]:
             rospy.loginfo("Switching ON %s", motorToOn)
-            GPIO.output(motorToOn, GPIO.HIGH)
+            GPIO.output(motors[motorToOn], GPIO.HIGH)
 
 
 
