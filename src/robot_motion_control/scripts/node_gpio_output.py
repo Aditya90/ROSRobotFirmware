@@ -3,23 +3,42 @@ import rospy
 from std_msgs.msg import String
 import Adafruit_BBIO.GPIO as GPIO
 
+motors = {
+    'front_right': "P9_12",
+    'front_left': "P9_23",
+    'back_right': "P9_25",
+    'back_left': "P9_27"
+}
+
+cmd_to_motors = {
+    'F': ['front_right', 'front_left', 'back_left', 'back_right'],
+    'L': ['front_right', 'back_right'],
+    'R': ['front_left', 'back_left'],
+    'STOP': []
+}
+
 
 def motion_topic_callback(data):
     rospy.loginfo(rospy.get_caller_id() + "Moving %s", data.data)
 
+    if data.data in cmd_to_motors.keys():
+        for motorToOff in motors.keys() not in cmd_to_motors[data.data]:
+            rospy.loginfo("Switching OFF %s", motorToOff)
+            GPIO.output(motorToOff, GPIO.LOW)
+
+        for motorToOn in cmd_to_motors[data.data]:
+            rospy.loginfo("Switching ON %s", motorToOn)
+            GPIO.output(motorToOn, GPIO.HIGH)
+
+
 
 def init_motors():
+
     # Set up the GPIO pins as output
     # GPIO_49   []-----[]    GPIO_60
     #               |
     #               |
-    # GPIO_117  []-----[]    GPIO_115
-    motors = {
-        'front_right': "P9_12",
-        'front_left': "P9_23",
-        'back_right': "P9_25",
-        'back_left': "P9_27"
-    }
+    # GPIO_115  []-----[]    GPIO_117
 
     # Setup all motor pins as output
     for motorPins in motors.values():
