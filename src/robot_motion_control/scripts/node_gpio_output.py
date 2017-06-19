@@ -3,30 +3,18 @@ import rospy
 from std_msgs.msg import String
 import Adafruit_BBIO.GPIO as GPIO
 
-#motors = {
-#    'front_right': "P9_12",
-#    'front_left': "P9_23",
-#    'back_right': "P9_25",
-#    'back_left': "P9_27"
-#}
-
-#cmd_to_motors = {
-#    'F': ['front_right', 'front_left', 'back_left', 'back_right'],
-#    'L': ['front_right', 'back_right'],
-#    'R': ['front_left', 'back_left'],
-#    'STOP': []
-#}
-
 motors = {
-    '1a': "P9_12",
-    '2a': "P9_23"
+    'left_pos': "P9_12",
+    'left_neg': "P9_23",
+    'right_pos': "P9_25",
+    'right_neg': "P9_27"
 }
 
 cmd_to_motors = {
-    'LH': ['2a'],
-    'HL': ['1a'],
-    'HH': ['1a', '2a'],
-    'LL': []
+    'F': ['left_pos', 'right_pos'],
+    'L': ['right_pos'],
+    'R': ['left_pos'],
+    'B': ['left_neg', 'right_neg']
 }
 
 
@@ -41,6 +29,10 @@ def motion_topic_callback(data):
         for motorToOn in cmd_to_motors[data.data]:
             rospy.loginfo("Switching ON %s", motorToOn)
             GPIO.output(motors[motorToOn], GPIO.HIGH)
+    else:
+        for motorToOff in motors.keys():
+            rospy.loginfo("Switching OFF %s", motorToOff)
+            GPIO.output(motors[motorToOff], GPIO.LOW)
 
 
 
