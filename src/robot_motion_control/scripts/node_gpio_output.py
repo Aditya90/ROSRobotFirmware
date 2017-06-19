@@ -3,18 +3,30 @@ import rospy
 from std_msgs.msg import String
 import Adafruit_BBIO.GPIO as GPIO
 
+#motors = {
+#    'front_right': "P9_12",
+#    'front_left': "P9_23",
+#    'back_right': "P9_25",
+#    'back_left': "P9_27"
+#}
+
+#cmd_to_motors = {
+#    'F': ['front_right', 'front_left', 'back_left', 'back_right'],
+#    'L': ['front_right', 'back_right'],
+#    'R': ['front_left', 'back_left'],
+#    'STOP': []
+#}
+
 motors = {
-    'front_right': "P9_12",
-    'front_left': "P9_23",
-    'back_right': "P9_25",
-    'back_left': "P9_27"
+    '1a': "P9_12",
+    '2a': "P9_23"
 }
 
 cmd_to_motors = {
-    'F': ['front_right', 'front_left', 'back_left', 'back_right'],
-    'L': ['front_right', 'back_right'],
-    'R': ['front_left', 'back_left'],
-    'STOP': []
+    'LH': ['2a'],
+    'HL': ['1a'],
+    'HH': ['1a', '2a'],
+    'LL': []
 }
 
 
