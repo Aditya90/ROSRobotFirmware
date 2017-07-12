@@ -45,10 +45,7 @@ https://cdn-learn.adafruit.com/downloads/pdf/setting-up-wifi-with-beaglebone-bla
 4. Follow the instructions on the [setup shell script](run_package.sh) on how to get the program started.
 
 ## Libraries required
-1. smbus - I2C communication library
-    - The Zeroborg libraries use smbus to communicated with the i2c lines on the BBB.
-    - Installation instructions - https://pypi.python.org/pypi/smbus-cffi/0.5.1
-2. Adafruit GPIO library 
+1. Adafruit GPIO library
     - The GPIO library from adafruit allows you to easily control the BBB's GPIOs
     - Installation instructions - https://github.com/adafruit/adafruit-beaglebone-io-python
 
