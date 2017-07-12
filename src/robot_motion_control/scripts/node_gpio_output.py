@@ -37,12 +37,6 @@ def motion_topic_callback(data):
 
 def init_motors():
 
-    # Set up the GPIO pins as output
-    # GPIO_49   []-----[]    GPIO_60
-    #               |
-    #               |
-    # GPIO_115  []-----[]    GPIO_117
-
     # Setup all motor pins as output
     for motorPins in motors.values():
         GPIO.setup(motorPins, GPIO.OUT)
