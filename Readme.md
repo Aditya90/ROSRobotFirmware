@@ -3,7 +3,7 @@
 [License](LICENSE)
 
 ## Introduction
-This project is aimed at creating a robot based on the Beagle Bone Black and a Zeroborg board using the ROS
+This project is aimed at creating a robot based on the Beagle Bone Black using the ROS
 architecture. The motivations behind this are :
 
 1. Create a software package which is modular so that individual components (like motor drivers) can be easily
@@ -57,9 +57,3 @@ https://cdn-learn.adafruit.com/downloads/pdf/setting-up-wifi-with-beaglebone-bla
 1. Installing Ubuntu on the BBB - http://charette.no-ip.com:81/programming/2015-06-07_BeagleBoneBlack/
 2. Installing ROS on BBB (the ubuntu img file links do not work here, but ROS installation is straightforward)
 - https://fleshandmachines.wordpress.com/2015/08/25/beaglebone-black-ubuntu-14-04-ros-indigo-install/.
-3. Zeroborg reference - https://www.piborg.org/zeroborg
-
-## Designs
-
-### Basic Motion Control
-![ROS Motion Control Structure](doc/basic-motion-design.jpg)
