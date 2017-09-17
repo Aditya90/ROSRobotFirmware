@@ -11,6 +11,12 @@ replaced.
 2. Learn ROS - because I want to
 3. Get more experience with Python and Linux programming
 
+## How to run the robot
+1. In a new teminal window, run the `run_roscore.sh` script
+2. In a new terminal window, Run the `run_keyboard.sh` script
+3. In a new terminal window, enable root permissions : `sudo su`
+4. In the same terminal window as step 3, run `run_gpio.sh`
+
 ## Getting started
 
 1. Install Ubuntu 14.04 on BBB  from instructions on http://charette.no-ip.com:81/programming/2015-06-07_BeagleBoneBlack/
