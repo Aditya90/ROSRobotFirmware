@@ -3,63 +3,67 @@
 [License](LICENSE)
 
 ## Introduction
-This project is aimed at creating a robot based on the Beagle Bone Black and a Zeroborg board using the ROS
-architecture. The motivations behind this are :
 
-1. Create a software package which is modular so that individual components (like motor drivers) can be easily
-replaced.
-2. Learn ROS - because I want to
-3. Get more experience with Python and Linux programming
+This project is aimed at creating a robot based running ROS which allows us to turn any generic robot hardware platform into a smart robot.
 
-## Getting started
+![robot](./doc/robot_image.jpg)
 
-1. Install Ubuntu 14.04 on BBB  from instructions on http://charette.no-ip.com:81/programming/2015-06-07_BeagleBoneBlack/
-and https://fleshandmachines.wordpress.com/2015/08/25/beaglebone-black-ubuntu-14-04-ros-indigo-install/.
+## Hardware Requirements
 
-    a. On Windows, use the Win32DiskImage and go to the shortcut file for the application
+1. Raspberry Pi 2 - Could work with the RPi3, but I have not tested it
+2. RaspiRobotV3 - https://www.monkmakes.com/rrb3/
+3. Power Supply - I have used a 9V supply with 6 AA batteries to ensure we can supply the required power to both boards.
+4. Test robot platform - I bought a 20 dollar robot off of ebay. Any platform with DC motors should work.
 
-    b. Select the "Compatibility" section, and check the part to run it
-    as a Windows XP SP2 application and as an administrator.
+## Installation
 
-    c. It also helps installing the drivers for BBB from https://learn.adafruit.com/ssh-to-beaglebone-black-over-usb/installing-drivers-windows
+1. Install Ubuntu Core 16 on the RPi 2 - https://developer.ubuntu.com/core/get-started/raspberry-pi-2-3
+    a. Dont connect other boards while doing this.
+    b. Sufficient power (2A USB) is required for working with the raspberry pi 2.  
+    c. Required Libraries - `gcc`, `g++`, `python`, `git`
 
-2. Plug in the wifi dongle. Modify the following settings (obtained from
-https://cdn-learn.adafruit.com/downloads/pdf/setting-up-wifi-with-beaglebone-black.pdf)
+2. SSH onto the raspberry pi - ssh <user-name>@<ip-address>
+      a. Need the private key in ubuntu core account, it should not ask for password(the password does not work)
+      b. To get apt-get and other applications, run `sudo classic` to get the classic ubuntu environment.
 
-    a. Edit the /etc/network/interfaces file to specify WiFi network connection details.
-    You will have to "sudo" to actually have priveleges to modify the file
+2. Install the ROS Kinetic using the generic ARM installation - http://wiki.ros.org/kinetic/Installation/Ubuntu]
 
-    b. Modify the commented block which looks like below
+3. Install the RaspiRobot V3 drivers - https://www.monkmakes.com/rrb3/
     ```
-    #auto wlan0
-    #iface wlan0 inet dhcp
-    # wpa-ssid "essid"
-    # wpa-psk "password"
+    cd ~
+    git clone https://github.com/simonmonk/raspirobotboard3.git
+    cd raspirobotboard3/python
+    sudo python setup.py install
     ```
-    Uncomment (delete the # for each line) this part and the fill in the
-    right ssid and password for the wifi you want to connect to.
 
-    c. Now run `sudo ifup wlan0`.
+4. Clone this repository and run `catkin_make` in the repository.
 
-3. Install ROS Indigo on the BBB based on instructions from https://fleshandmachines.wordpress.com/2015/08/25/beaglebone-black-ubuntu-14-04-ros-indigo-install/.
-4. Follow the instructions on the [setup shell script](run_package.sh) on how to get the program started.
+## Running the program
 
-## Libraries required
-1. smbus - I2C communication library
-    - The Zeroborg libraries use smbus to communicated with the i2c lines on the BBB.
-    - Installation instructions - https://pypi.python.org/pypi/smbus-cffi/0.5.1
-2. Adafruit GPIO library 
-    - The GPIO library from adafruit allows you to easily control the BBB's GPIOs
-    - Installation instructions - https://github.com/adafruit/adafruit-beaglebone-io-python
+1. SSH onto the RPi in 3  separate terminal windows.
+2. Terminal 1
+    a. Run `sudo classic`
+    b. Start the roscore. `roscore`
+3. Terminal 2 
+    a. Run `sudo classic`
+    b. Navigate to the project repo folder.
+    c. Run `catkin_make` and then `source ./devel/setup.bash`. 
+    d. Run  `rosrun robot_motion_control node_keyboard_motion_controller.py`. This starts the keyboard inputs for controlling the robot.
+4. Terminal 3
+    a. Run `sudo classic`
+    b. Run `sudo su`. We need to do this as the driver library needs root access to manipulate IOs.
+    c. Navigate to the project repo folder, run `source ./devel/setup.bash`. 
+    d. Run  `rosrun rpi_support node_raspirobotv3_driver.py`. This starts the motor control part of the robot.
+5. In terminal 2, type in the control commmands
+    a. F - Move forward
+    b. B - Move backward
+    c. L - Move right
+    d. R - Move left
+    e. S - Stop
 
 ## References
 
-1. Installing Ubuntu on the BBB - http://charette.no-ip.com:81/programming/2015-06-07_BeagleBoneBlack/
-2. Installing ROS on BBB (the ubuntu img file links do not work here, but ROS installation is straightforward)
-- https://fleshandmachines.wordpress.com/2015/08/25/beaglebone-black-ubuntu-14-04-ros-indigo-install/.
-3. Zeroborg reference - https://www.piborg.org/zeroborg
-
-## Designs
-
-### Basic Motion Control
-![ROS Motion Control Structure](doc/basic-motion-design.jpg)
+1. http://wiki.ros.org/ROSberryPi/Installing%20ROS%20Kinetic%20on%20the%20Raspberry%20Pi
+2. https://developer.ubuntu.com/core/get-started/developer-setup
+3. https://developer.ubuntu.com/core/get-started/raspberry-pi-2-3
+4. https://www.monkmakes.com/rrb3/

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(zeroborg_support)
+project(rpi_support)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -8,6 +8,7 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
+  robot_motion_control
 )
 
 ## System dependencies are found with CMake's conventions
@@ -101,8 +102,8 @@ find_package(catkin REQUIRED COMPONENTS
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES zeroborg
-#  CATKIN_DEPENDS roscpp rospy std_msgs
+#  LIBRARIES robot_motion_control
+   CATKIN_DEPENDS roscpp rospy std_msgs robot_motion_control
 #  DEPENDS system_lib
 )
 
@@ -118,24 +119,24 @@ include_directories(
 )
 
 ## Declare a C++ library
-# add_library(zeroborg
-#   src/${PROJECT_NAME}/zeroborg.cpp
+# add_library(robot_motion_control
+#   src/${PROJECT_NAME}/robot_motion_control.cpp
 # )
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
 ## either from message generation or dynamic reconfigure
-# add_dependencies(zeroborg ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+# add_dependencies(robot_motion_control ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Declare a C++ executable
-# add_executable(zeroborg_node src/zeroborg_node.cpp)
+# add_executable(robot_motion_control_node src/robot_motion_control_node.cpp)
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
-# add_dependencies(zeroborg_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+# add_dependencies(robot_motion_control_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-# target_link_libraries(zeroborg_node
+# target_link_libraries(robot_motion_control_node
 #   ${catkin_LIBRARIES}
 # )
 
@@ -154,7 +155,7 @@ include_directories(
 # )
 
 ## Mark executables and/or libraries for installation
-# install(TARGETS zeroborg zeroborg_node
+# install(TARGETS robot_motion_control robot_motion_control_node
 #   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
@@ -179,13 +180,10 @@ include_directories(
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_zeroborg.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_robot_motion_control.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
-
-catkin_python_setup()
-#catkin_install_python(PROGRAMS scripts/zeroborg.py DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})

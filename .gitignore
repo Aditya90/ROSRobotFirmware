@@ -3,3 +3,4 @@ build/
 devel/
 install/
 *.pyc
+src/rpi_support/scripts/raspirobotboard3

@@ -1,17 +1,19 @@
 #!/usr/bin/env python
+'''
+This node is a subscriber to print out everything which is going on the Motion Topic.
+It is merely for validation of the pub-sub method (as an alternative to opening up
+the raw ros topic).
+'''
 import rospy
 from std_msgs.msg import String
-from zeroborg_support.zeroborg import ZeroBorg
 
-
-ZB = ZeroBorg()
 
 def motion_topic_callback(data):
     rospy.loginfo(rospy.get_caller_id() + "Moving %s", data.data)
 
 
 def motion_topic_listener():
-    rospy.init_node('ZeroborgOutput', anonymous=True)
+    rospy.init_node('MotionTopicSubscriber', anonymous=True)
 
     rospy.Subscriber("MOTION_TOPIC", String, motion_topic_callback)
 
