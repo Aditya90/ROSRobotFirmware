@@ -1,4 +1,8 @@
 #!/usr/bin/env python
+'''
+The main control input. This node gets inputs from the keyboard
+and redirects it to the ROS topic.
+'''
 
 import rospy
 from std_msgs.msg import String
