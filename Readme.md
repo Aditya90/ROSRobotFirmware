@@ -42,15 +42,24 @@ This project is aimed at creating a robot based running ROS which allows us to t
 
 1. SSH onto the RPi in 3  separate terminal windows.
 2. Terminal 1
-    a. Start the roscore. `roscore`
+    a. Run `sudo classic`
+    b. Start the roscore. `roscore`
 3. Terminal 2 
-    a. Navigate to the project repo folder.
-    b. Run `catkin_make` and then `source ./devel/setup.bash`. 
-    c. Run  `rosrun robot_motion_control node_keyboard_motion_controller.py`. This starts the keyboard inputs for controlling the robot.
-4. Terminal 3 - 
-    a. Navigate to the project repo folder, run `source ./devel/setup.bash`. 
+    a. Run `sudo classic`
+    b. Navigate to the project repo folder.
+    c. Run `catkin_make` and then `source ./devel/setup.bash`. 
+    d. Run  `rosrun robot_motion_control node_keyboard_motion_controller.py`. This starts the keyboard inputs for controlling the robot.
+4. Terminal 3
+    a. Run `sudo classic`
     b. Run `sudo su`. We need to do this as the driver library needs root access to manipulate IOs.
-    b. Run  `rosrun rpi_support node_raspirobotv3_driver.py`. This starts the motor control part of the robot.
+    c. Navigate to the project repo folder, run `source ./devel/setup.bash`. 
+    d. Run  `rosrun rpi_support node_raspirobotv3_driver.py`. This starts the motor control part of the robot.
+5. In terminal 2, type in the control commmands
+    a. F - Move forward
+    b. B - Move backward
+    c. L - Move right
+    d. R - Move left
+    e. S - Stop
 
 ## References
 
