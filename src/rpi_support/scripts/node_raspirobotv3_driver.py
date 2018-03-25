@@ -69,7 +69,7 @@ class RaspiRobot():
 
         if direction in self.DIRN_TO_MOTOR_INPUTS.keys():
             rospy.loginfo(rospy.get_caller_id() + "Moving %s", direction)
-            motor_inputs = self.DIRN_TO_MOTOR_INPUTS[data.data]
+            motor_inputs = self.DIRN_TO_MOTOR_INPUTS[direction]
             self.rr.set_motors(motor_inputs[0], motor_inputs[1], motor_inputs[2], motor_inputs[3])
 
 
