@@ -6,7 +6,7 @@
 
 This project is aimed at creating a robot based running ROS which allows us to turn any generic robot hardware platform into a smart robot.
 
-![robot](robot_image.jpg)
+![robot](./doc/robot_image.jpg)
 
 ## Hardware Requirements
 
@@ -17,7 +17,7 @@ This project is aimed at creating a robot based running ROS which allows us to t
 
 ## Installation
 
-1. Install Ubuntu 16 04 on the RPi 2 - https://developer.ubuntu.com/core/get-started/raspberry-pi-2-3
+1. Install Ubuntu Core 16 on the RPi 2 - https://developer.ubuntu.com/core/get-started/raspberry-pi-2-3
     a. Dont connect other boards while doing this.
     b. Sufficient power (2A USB) is required for working with the raspberry pi 2.  
     c. Required Libraries - `gcc`, `g++`, `python`, `git`
