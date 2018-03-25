@@ -7,7 +7,7 @@ motion topic.
 import rospy
 from std_msgs.msg import String
 
-from raspirobotboard3.python.rrb3 import *
+from rrb3 import *
 
 BATTERY_VOLTAGE=9
 MOTOR_VOLTAGE=6
@@ -34,7 +34,8 @@ def motion_topic_callback(data):
 
     if data.data in cmd_to_motors.keys():
         rospy.loginfo(rospy.get_caller_id() + "Moving %s", data.data)
-        rr.set_motors(cmd_to_motors[data.data])
+	motor_inputs = cmd_to_motors[data.data]
+        rr.set_motors(motor_inputs[0], motor_inputs[1], motor_inputs[2], motor_inputs[3])
 
 
 def motion_topic_listener():
