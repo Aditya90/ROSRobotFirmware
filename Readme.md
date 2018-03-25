@@ -43,6 +43,7 @@ https://cdn-learn.adafruit.com/downloads/pdf/setting-up-wifi-with-beaglebone-bla
 
 3. Install ROS Indigo on the BBB based on instructions from https://fleshandmachines.wordpress.com/2015/08/25/beaglebone-black-ubuntu-14-04-ros-indigo-install/.
 4. Follow the instructions on the [setup shell script](run_package.sh) on how to get the program started.
+5. Install open cv for ROS - http://wiki.ros.org/cv_camera, http://wiki.ros.org/vision_opencv
 
 ## Libraries required
 1. Adafruit GPIO library

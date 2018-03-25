@@ -3,6 +3,7 @@ import rospy
 from std_msgs.msg import String
 import Adafruit_BBIO.GPIO as GPIO
 
+
 motors = {
     'left_pos': "P9_12",
     'left_neg': "P9_23",
@@ -49,7 +50,6 @@ def motion_topic_listener():
     rospy.Subscriber("MOTION_TOPIC", String, motion_topic_callback)
 
     # spin() simply keeps python from exiting until this node is stopped
-
     rospy.spin()
 
 if __name__ == '__main__':
