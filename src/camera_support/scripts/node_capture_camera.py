@@ -25,7 +25,7 @@ class ImageCapture:
         cv2.namedWindow(self.cv_window_name, cv2.WINDOW_NORMAL)
         cv2.moveWindow(self.cv_window_name, 25, 75)
 
-        rospy.Subscriber("/cv_camera/image_raw", Image, self.image_capture_callback)
+        rospy.Subscriber("/cv_camera/image_raw", String, self.image_capture_callback)
 
     def image_capture_callback(self, opencv_image):
         # Convert the image to a Numpy array since most cv2 functions
