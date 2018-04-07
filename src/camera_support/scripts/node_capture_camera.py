@@ -8,6 +8,7 @@ from sensor_msgs.msg import Image, CameraInfo
 import cv2
 #import cv2.cv as cv
 import numpy as np
+from cv_bridge import CvBridge, CvBridgeError
 
 
 class ImageCapture:
@@ -24,13 +25,21 @@ class ImageCapture:
         self.cv_window_name = self.node_name
         cv2.namedWindow(self.cv_window_name, cv2.WINDOW_NORMAL)
         cv2.moveWindow(self.cv_window_name, 25, 75)
+        # Create the cv_bridge object
+        self.bridge = CvBridge()
 
-        rospy.Subscriber("/cv_camera/image_raw", String, self.image_capture_callback)
+        rospy.Subscriber("/cv_camera/image_raw", Image, self.image_capture_callback)
 
     def image_capture_callback(self, opencv_image):
+        # Use cv_bridge() to convert the ROS image to OpenCV format
+        try:
+            frame = self.bridge.imgmsg_to_cv(opencv_image, "bgr8")
+        except CvBridgeError, e:
+            print e
+
         # Convert the image to a Numpy array since most cv2 functions
         # require Numpy arrays.
-        frame = np.array(opencv_image, dtype=np.uint8)
+        frame = np.array(frame, dtype=np.uint8)
 
         # Process the frame using the process_image() function
         #display_image = self.process_image(frame)
