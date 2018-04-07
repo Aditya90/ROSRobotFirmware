@@ -28,12 +28,12 @@ class ImageCapture:
         # Create the cv_bridge object
         self.bridge = CvBridge()
 
-        rospy.Subscriber("/cv_camera/image_raw", Image, self.image_capture_callback)
+        self.image_sub = rospy.Subscriber("/cv_camera/image_raw", Image, self.image_capture_callback)
 
     def image_capture_callback(self, opencv_image):
         # Use cv_bridge() to convert the ROS image to OpenCV format
         try:
-            frame = self.bridge.imgmsg_to_cv(opencv_image, "bgr8")
+            frame = self.bridge.imgmsg_to_cv2(opencv_image, "bgr8")
         except CvBridgeError, e:
             print e
 
@@ -42,11 +42,22 @@ class ImageCapture:
         frame = np.array(frame, dtype=np.uint8)
 
         # Process the frame using the process_image() function
-        #display_image = self.process_image(frame)
-        display_image = frame
-        
+        display_image = self.process_image(frame)
+
         # Display the image.
         cv2.imshow(self.node_name, display_image)
+
+    def process_image(self, frame):
+        # Convert to greyscale
+        grey = cv2.cvtColor(frame, cv2.BGR2GRAY)
+
+        # Blur the image
+        grey = cv2.blur(grey, (7, 7))
+
+        # Compute edges using the Canny edge filter
+        edges = cv2.Canny(grey, 15.0, 30.0)
+
+        return edges
 
 if __name__ == '__main__':
 
