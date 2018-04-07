@@ -5,8 +5,8 @@ import rospy
 from std_msgs.msg import String
 from sensor_msgs.msg import Image, CameraInfo
 
-import cv3
-import cv3.cv as cv
+import cv2
+#import cv2.cv as cv
 import numpy as np
 
 
@@ -22,10 +22,10 @@ class ImageCapture:
 
         # Create the OpenCV display window for the RGB image
         self.cv_window_name = self.node_name
-        cv.NamedWindow(self.cv_window_name, cv.CV_WINDOW_NORMAL)
-        cv.MoveWindow(self.cv_window_name, 25, 75)
+        cv2.namedWindow(self.cv_window_name, cv2.WINDOW_NORMAL)
+        cv2.moveWindow(self.cv_window_name, 25, 75)
 
-        rospy.subscriber("/cv_camera/image_raw", Image, image_capture_callback)
+        rospy.Subscriber("/cv_camera/image_raw", Image, self.image_capture_callback)
 
     def image_capture_callback(self, opencv_image):
         # Convert the image to a Numpy array since most cv2 functions
@@ -37,7 +37,7 @@ class ImageCapture:
         display_image = frame
         
         # Display the image.
-        cv3.imshow(self.node_name, display_image)
+        cv2.imshow(self.node_name, display_image)
 
 if __name__ == '__main__':
 
