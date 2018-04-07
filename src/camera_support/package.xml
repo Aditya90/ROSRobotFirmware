@@ -37,11 +37,11 @@
   <build_depend>roscpp</build_depend>
   <build_depend>rospy</build_depend>
   <build_depend>std_msgs</build_depend>
-  <build_depend>cv_camera</build_depend>
+  <build_depend>video_stream_opencv</build_depend>
   <run_depend>roscpp</run_depend>
   <run_depend>rospy</run_depend>
   <run_depend>std_msgs</run_depend>
-  <run_depend>cv_camera</run_depend>
+  <run_depend>video_stream_opencv</run_depend>
 
 
   <!-- The export tag contains other, unspecified, tags -->

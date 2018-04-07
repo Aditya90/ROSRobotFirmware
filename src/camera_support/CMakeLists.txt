@@ -8,7 +8,7 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
-  cv_camera
+  video_stream_opencv
 )
 
 ## System dependencies are found with CMake's conventions
@@ -103,7 +103,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES robot_motion_control
-   CATKIN_DEPENDS roscpp rospy std_msgs cv_camera
+   CATKIN_DEPENDS roscpp rospy std_msgs video_stream_opencv
 #  DEPENDS system_lib
 )
 
