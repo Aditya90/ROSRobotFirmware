@@ -29,7 +29,7 @@ class ImageCapture:
     def image_capture_callback(self, opencv_image):
         # Use cv_bridge() to convert the ROS image to OpenCV format
         try:
-            cv_image = self.bridge.imgmsg_to_cv2(data, "bgr8")
+            cv_image = self.bridge.imgmsg_to_cv2(opencv_image, "bgr8")
         except CvBridgeError as e:
             print(e)
 
@@ -41,24 +41,16 @@ class ImageCapture:
         # Display the image.
         cv2.imshow(self.node_name, cv_image)
 
-    def process_image(self, frame):
-        # Convert to greyscale
-        grey = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-
-        # Blur the image
-        grey = cv2.blur(grey, (7, 7))
-
-        # Compute edges using the Canny edge filter
-        edges = cv2.Canny(grey, 15.0, 30.0)
-
-        return edges
+        # Use the wait key to make sure the window is populated
+        # with the image.
+        cv2.waitKey(3)
 
     def cleanup(self):
         cv2.destroyAllWindows()
 
 if __name__ == '__main__':
 
-    # Init the raspirobot with the right voltages
+    # Start the camera capture object
     ImageCapture()
 
     try:
