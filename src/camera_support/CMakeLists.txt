@@ -9,6 +9,9 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
   video_stream_opencv
+  sensor_msgs
+  opencv2
+  cv_bridge
 )
 
 ## System dependencies are found with CMake's conventions

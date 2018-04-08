@@ -49,7 +49,7 @@ class ImageCapture:
 
     def process_image(self, frame):
         # Convert to greyscale
-        grey = cv2.cvtColor(frame, cv2.BGR2GRAY)
+        grey = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
         # Blur the image
         grey = cv2.blur(grey, (7, 7))
