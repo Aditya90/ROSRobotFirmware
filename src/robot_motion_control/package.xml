@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
   <name>robot_motion_control</name>
-  <version>0.0.0</version>
+  <version>1.0.0</version>
   <description>The robot_motion_control package</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag -->
