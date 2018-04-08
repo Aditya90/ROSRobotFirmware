@@ -10,7 +10,6 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   video_stream_opencv
   sensor_msgs
-  opencv2
   cv_bridge
 )
 
