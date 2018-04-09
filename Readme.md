@@ -14,6 +14,7 @@ This project is aimed at creating a robot based running ROS which allows us to t
 2. RaspiRobotV3 - https://www.monkmakes.com/rrb3/
 3. Power Supply - I have used a 9V supply with 6 AA batteries to ensure we can supply the required power to both boards.
 4. Test robot platform - I bought a 20 dollar robot off of ebay. Any platform with DC motors should work.
+5. USB Camera
 
 ## Installation
 

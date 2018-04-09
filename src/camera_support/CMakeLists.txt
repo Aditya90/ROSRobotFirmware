@@ -8,7 +8,6 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
-  video_stream_opencv
   sensor_msgs
   cv_bridge
 )
@@ -105,7 +104,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES robot_motion_control
-   CATKIN_DEPENDS roscpp rospy std_msgs video_stream_opencv
+   CATKIN_DEPENDS roscpp rospy std_msgs cv_bridge
 #  DEPENDS system_lib
 )
 
